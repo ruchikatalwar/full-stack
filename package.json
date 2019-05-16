@@ -24,9 +24,12 @@
     "nodemon": "^1.19.0"
   },
   "dependencies": {
+    "balanced-match": "^1.0.0",
     "body-parser": "^1.19.0",
     "cookie": "^0.4.0",
     "cookie-parser": "^1.4.4",
+    "core-util-is": "^1.0.2",
+    "create-react-app": "^3.0.1",
     "express": "^4.16.4",
     "parser": "^0.1.4",
     "pg": "^7.11.0"

@@ -4,8 +4,8 @@ import { Row, Col, Table } from 'reactstrap';
 const Weather = (props) => {
   const { data } = props;
 
-  // if (!data)
-  //   return null;
+  if (!data)
+    return null;
 
   return (
     <Row className="weather">

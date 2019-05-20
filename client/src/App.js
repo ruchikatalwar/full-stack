@@ -101,7 +101,7 @@ class App extends Component {
             <FormGroup>
               <Input type="select" onChange={this.handleChangeCity}>
                 { this.state.cityList.length === 0 && <option>No cities added yet.</option> }
-                { this.state.cityList.length > 0 && <option>Select a city.</option> }
+                { this.state.cityList.length > 0 && <placeholder>Select a city.</placeholder> }
                 { this.state.cityList.map((city, i) => <option key={i}>{city}</option>) }
               </Input>
             </FormGroup>

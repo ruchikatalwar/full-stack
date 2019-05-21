@@ -74,12 +74,12 @@ class App extends Component {
     return (
       <Container fluid className="centered">
         <Navbar dark color="dark">
-          <NavbarBrand href="/">MyWeather</NavbarBrand>
+          <NavbarBrand href="/">UBS Weather</NavbarBrand>
         </Navbar>
         <Row>
           <Col>
             <Jumbotron>
-              <h1 className="display-3">MyWeather</h1>
+              <h1 className="display-3">iWeather</h1>
               <p className="lead">The current weather for your favorite cities!</p>
               <InputGroup>
                 <Input 
@@ -88,7 +88,7 @@ class App extends Component {
                   onChange={this.handleInputChange}
                 />
                 <InputGroupAddon addonType="append">
-                  <Button color="primary" onClick={this.handleAddCity}>Add City</Button>
+                  <Button color="primary" onClick={ this.state.newCityName.length > 0  && this.handleAddCity}>Add City</Button>
                 </InputGroupAddon>
                 
               </InputGroup>
@@ -101,7 +101,7 @@ class App extends Component {
             <FormGroup>
               <Input type="select" onChange={this.handleChangeCity}>
                 { this.state.cityList.length === 0 && <option>No cities added yet.</option> }
-                { this.state.cityList.length > 0 && <placeholder>Select a city.</placeholder> }
+                { this.state.cityList.length > 0 && <option disabled selected readonly >Select a city.</option> }
                 { this.state.cityList.map((city, i) => <option key={i}>{city}</option>) }
               </Input>
             </FormGroup>

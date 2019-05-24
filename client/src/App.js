@@ -15,17 +15,46 @@ import {
 } from 'reactstrap';
 
 import Weather from './Weather';
+import {Form} from './Form';
+
+const initialState = {
+  newCityName: '',
+  newCityNameError:""
+  }
 
 class App extends Component {
   constructor(props) {
     super(props);
   
-    this.state = {
+      this.state = {
        weather: null,
        cityList: [],
-       newCityName: ''
+       newCityName: '',
+       newCityNameError:""
     };
   }
+
+  validate = () => {
+    let newCityNameError = "" ;
+    var regEx = new RegExp("^[a-zA-Z ]*$"); 
+    if (this.state.newCityName.includes('@')) {
+    newCityNameError = 'Invalid city name, try again';
+    }
+
+    if (!this.state.newCityName.match(regEx)) {
+      newCityNameError = 'Invalid city name, try again';
+      }
+
+  if (newCityNameError) {
+  setTimeout(function() { alert("Invalid city name"); }, 10)
+    this.setState({initialState});
+     
+   this.setState({ newCityName: '' });
+   return false;
+ 
+  }
+    return true;
+  };
 
   getCityList = () => {
     fetch('/api/cities')
@@ -38,9 +67,12 @@ class App extends Component {
 
   handleInputChange = (e) => {
     this.setState({ newCityName: e.target.value });
+  
   };
 
   handleAddCity = () => {
+    const isValid = this.validate();
+    if(isValid) 
     fetch('/api/cities', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
@@ -50,7 +82,7 @@ class App extends Component {
     .then(res => {
       this.getCityList();
       this.setState({ newCityName: '' });
-    });
+    });  
   };
 
   getWeather = (city) => {
@@ -87,12 +119,13 @@ class App extends Component {
                   value={this.state.newCityName}
                   onChange={this.handleInputChange}
                 />
-                <InputGroupAddon addonType="append">
+               <InputGroupAddon addonType="append">
                   <Button color="primary" onClick={ this.state.newCityName.length > 0  && this.handleAddCity}>Add City</Button>
                 </InputGroupAddon>
-                
-              </InputGroup>
-            </Jumbotron>
+                 </InputGroup>
+                 <div style = {{fontSize: 12, color:"red"}}> {this.state.newCityNameError}
+                  </div> 
+             </Jumbotron>
           </Col>
         </Row>
         <Row>
@@ -114,3 +147,7 @@ class App extends Component {
 }
 
 export default App;
+
+
+
+

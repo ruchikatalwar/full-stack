@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "b14b46cb-99a2-4811-b647-53efb0e6b860",
+		"name": "Postman API Test Collection",
+		"description": "This is a test collection for a weather API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://api.openweathermap.org/data/2.5/weather?q=London&APPID=50a5d0165878cd27f5f7bb94df7600d6&units=imperial",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "188eacb3-6410-4447-98ba-c32dd5c5dd23",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"802\");",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.openweathermap.org/data/2.5/weather?q=London&APPID=50a5d0165878cd27f5f7bb94df7600d6&units=imperial",
+					"protocol": "https",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "London"
+						},
+						{
+							"key": "APPID",
+							"value": "50a5d0165878cd27f5f7bb94df7600d6"
+						},
+						{
+							"key": "units",
+							"value": "imperial"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://api.openweathermap.org/data/2.5/weather?q=London&APPID=50a5d0165878cd27f5f7bb94df7600d6&units=imperial",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"coord\": {\n        \"lon\": -0.13,\n        \"lat\": 51.51\n    },\n    \"weather\": [\n        {\n            \"id\": 802,\n            \"main\": \"Clouds\",\n            \"description\": \"scattered clouds\",\n            \"icon\": \"03d\"\n        }\n    ],\n    \"base\": \"stations\",\n    \"main\": {\n        \"temp\": 73.09,\n        \"pressure\": 1014,\n        \"humidity\": 31,\n        \"temp_min\": 69.01,\n        \"temp_max\": 77\n    },\n    \"visibility\": 10000,\n    \"wind\": {\n        \"speed\": 10.29,\n        \"deg\": 180\n    },\n    \"clouds\": {\n        \"all\": 30\n    },\n    \"dt\": 1558624536,\n    \"sys\": {\n        \"type\": 1,\n        \"id\": 1414,\n        \"message\": 0.0108,\n        \"country\": \"GB\",\n        \"sunrise\": 1558583912,\n        \"sunset\": 1558641375\n    },\n    \"timezone\": 3600,\n    \"id\": 2643743,\n    \"name\": \"London\",\n    \"cod\": 200\n}"
+				},
+				"url": {
+					"raw": "https://api.openweathermap.org/data/2.5/weather?q=London&APPID=50a5d0165878cd27f5f7bb94df7600d6&units=imperial",
+					"protocol": "https",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "London"
+						},
+						{
+							"key": "APPID",
+							"value": "50a5d0165878cd27f5f7bb94df7600d6"
+						},
+						{
+							"key": "units",
+							"value": "imperial"
+						}
+					]
+				},
+				"description": "POSTMAN BODY POST"
+			},
+			"response": []
+		}
+	]
+}

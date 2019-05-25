@@ -1,6 +1,10 @@
 import { validate } from "@babel/types";
 import { handleInputChange } from './App';
 
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+
 let result;
 
 test('Practise test', () => {
@@ -11,5 +15,9 @@ test('Practise test', () => {
 });
 
 
+// THIS IS THE BASIC UNIT TEST THAT WE WILL USE TO SEE IF THE COMPONENT RENDERS.
 
-
+it('renders without crashing', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(<App />, div);
+});

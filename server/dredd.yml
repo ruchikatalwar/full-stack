@@ -29,4 +29,5 @@ hooks-worker-handler-host: 127.0.0.1
 hooks-worker-handler-port: 61321
 config: ./dredd.yml
 blueprint: api-description.yml
-endpoint: 'https://api.openweathermap.org/data/2.5/weather'
+endpoint: >-
+  https://api.openweathermap.org/data/2.5/weather?q=London&APPID=50a5d0165878cd27f5f7bb94df7600d6&units=imperial

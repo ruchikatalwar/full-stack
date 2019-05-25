@@ -25,7 +25,8 @@
   "homepage": "https://github.com/harissheikh24/full-stack-react-app#readme",
   "devDependencies": {
     "concurrently": "^4.1.0",
-    "nodemon": "^1.19.0"
+    "nodemon": "^1.19.0",
+    "webdriverio": "^4.14.4"
   },
   "dependencies": {
     "balanced-match": "^1.0.0",
@@ -37,6 +38,7 @@
     "express": "^4.16.4",
     "parser": "^0.1.4",
     "pg": "^7.11.0",
+    "react-html-id": "^0.1.5",
     "react-scripts": "^3.0.1",
     "reactjs-popup": "^1.4.0",
     "request": "^2.88.0",

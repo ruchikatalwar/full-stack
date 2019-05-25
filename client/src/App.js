@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import uniqueID from 'react-html-id';
+
 
 import {
   Container,
@@ -25,6 +27,8 @@ const initialState = {
 class App extends Component {
   constructor(props) {
     super(props);
+
+    uniqueID.enableUniqueIds(this)
   
       this.state = {
        weather: null,
@@ -113,14 +117,14 @@ class App extends Component {
             <Jumbotron>
               <h1 className="display-3">iWeather</h1>
               <p className="lead">The current weather for your favorite cities!</p>
-              <InputGroup>
-                <Input 
+              <InputGroup htmlFor={this.nextUniqueId()}>
+                <Input id={this.lastUniqueId()}
                   placeholder="New city name..."
                   value={this.state.newCityName}
                   onChange={this.handleInputChange}
                 />
-               <InputGroupAddon addonType="append">
-                  <Button color="primary" onClick={ this.state.newCityName.length > 0  && this.handleAddCity}>Add City</Button>
+               <InputGroupAddon htmlFor={this.nextUniqueId()} addonType="append">
+                  <Button id={this.lastUniqueId()} color="primary" onClick={ this.state.newCityName.length > 0  && this.handleAddCity}>Add City</Button>
                 </InputGroupAddon>
                  </InputGroup>
                  <div style = {{fontSize: 12, color:"red"}}> {this.state.newCityNameError}
@@ -132,7 +136,7 @@ class App extends Component {
           <Col>
             <h1 className="display-5">Current Weather</h1>
             <FormGroup>
-              <Input type="select" onChange={this.handleChangeCity}>
+              <Input htmlFor={this.nextUniqueId()} id={this.lastUniqueId()} type="select" onChange={this.handleChangeCity}>
                 { this.state.cityList.length === 0 && <option>No cities added yet.</option> }
                 { this.state.cityList.length > 0 && <option disabled selected readonly >Select a city.</option> }
                 { this.state.cityList.map((city, i) => <option key={i}>{city}</option>) }

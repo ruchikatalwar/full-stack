@@ -8,6 +8,8 @@ client
 .url('https://weather-app-hs2019.herokuapp.com/')
 .setValue('#id-1-1', 'Spain')
 .click("#id-1-2")
+.click("#id-1-3")
+
 
 
 
